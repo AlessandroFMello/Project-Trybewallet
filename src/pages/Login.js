@@ -49,6 +49,7 @@ class Login extends React.Component {
 
   checkEmail() {
     const { email } = this.state;
+    // Dica do Denis Johnatan de utilizar verificação por regex
     const emailFormatRegex = /\S+@\S+\.\S+/;
     const verifyIfIsValid = emailFormatRegex.test(email);
     if (verifyIfIsValid) {
