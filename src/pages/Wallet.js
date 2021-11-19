@@ -3,14 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Wallet extends React.Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    this.state = {
-      currencies: [],
-      expenses: []
-    };
-  }
+  //   this.state = {
+  //     currencies: [],
+  //     expenses: [],
+  //   };
+  // }
 
   render() {
     const { getEmail } = this.props;
