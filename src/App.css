@@ -1,9 +1,7 @@
 body {
-  align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100vh;
-  justify-content: center;
   width: 100vw;
 }
 
@@ -22,3 +20,17 @@ body {
   width: 300px;
 }
 
+.wallet-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  top: 0;
+}
+
+.email-currency-component {
+  display: flex;
+  flex-direction: column;
+
+}
