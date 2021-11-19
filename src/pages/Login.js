@@ -109,11 +109,9 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }),
-  // eslint-disable-next-line react/require-default-props
+    push: PropTypes.func,
+  }).isRequired,
   userEmailDispatch: PropTypes.func.isRequired,
 };
 
