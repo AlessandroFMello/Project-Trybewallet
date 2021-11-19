@@ -25,12 +25,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100vw;
   top: 0;
+  width: 100vw;
 }
 
 .email-currency-component {
   display: flex;
   flex-direction: column;
-
 }
