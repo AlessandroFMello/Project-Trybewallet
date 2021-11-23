@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { setExpense, getAPICurrencies } from '../actions/index';
 import categories from '../helpers/categories';
 import paymentMethods from '../helpers/paymentMethods';
-import coins from '../helpers/coins';
 
 class Wallet extends React.Component {
   constructor() {
@@ -54,6 +53,13 @@ class Wallet extends React.Component {
       ...this.state,
       exchangeRates: getCurrency,
     });
+    this.setState({
+      value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      description: '',
+    });
   }
 
   formValue() {
@@ -72,6 +78,8 @@ class Wallet extends React.Component {
 
   formCurrency() {
     const { currency } = this.state;
+    const { getCurrency } = this.props;
+
     return (
       <select
         type="text"
@@ -81,10 +89,10 @@ class Wallet extends React.Component {
         value={ currency }
       >
         {
-          coins.map((coin) => (
-            <option key={ coin } value={ coin }>
-              { coin }
-            </option>))
+          Object.keys(getCurrency)
+            .filter((key) => key !== 'USDT')
+            .map((coin) => (
+              <option key={ coin } data-testid={ coin }>{coin}</option>))
         }
       </select>
     );
@@ -100,6 +108,13 @@ class Wallet extends React.Component {
         onChange={ this.handleChange }
         value={ method }
       >
+        {/* <option
+          value=""
+          disabled
+          hidden
+        >
+          Selecione o Método de Pagamento
+        </option> */}
         {
           paymentMethods.map((paymentMethod) => (
             <option key={ paymentMethod } value={ paymentMethod }>
@@ -146,8 +161,10 @@ class Wallet extends React.Component {
 
   renderHeader() {
     const { getEmail, getExpenses } = this.props;
-    let totalExpenses = 0;
-    getExpenses.forEach((expense) => { totalExpenses += Number(expense.value); });
+    const totalExpenses = getExpenses.reduce((accumulator, current) => (
+      accumulator + (current.value * current.exchangeRates[current.currency].ask)
+    ), 0);
+
     return (
       <header className="wallet-header">
         <h1>Trybe</h1>
@@ -188,12 +205,12 @@ class Wallet extends React.Component {
 }
 
 Wallet.propTypes = {
+  fetchedCurrencies: PropTypes.func.isRequired,
   getCurrency: PropTypes.isRequired,
   getEmail: PropTypes.isRequired,
   getExpenses: PropTypes.shape({
-    forEach: PropTypes.func,
+    reduce: PropTypes.func,
   }).isRequired,
-  fetchedCurrencies: PropTypes.func.isRequired,
   userExpensesDispatch: PropTypes.func.isRequired,
 };
 
