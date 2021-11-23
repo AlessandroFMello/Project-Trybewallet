@@ -12,9 +12,9 @@ class Wallet extends React.Component {
 
     this.state = {
       value: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
+      currency: '',
+      method: '',
+      tag: '',
       description: '',
     };
 
@@ -81,20 +81,31 @@ class Wallet extends React.Component {
     const { getCurrency } = this.props;
 
     return (
-      <select
-        type="text"
-        data-testid="currency-input"
-        name="currency"
-        onChange={ this.handleChange }
-        value={ currency }
-      >
-        {
-          Object.keys(getCurrency)
-            .filter((key) => key !== 'USDT')
-            .map((coin) => (
-              <option key={ coin } data-testid={ coin }>{coin}</option>))
-        }
-      </select>
+      <label htmlFor="moeda">
+        <div className="moeda">Moeda</div>
+        <select
+          id="moeda"
+          type="text"
+          data-testid="currency-input"
+          name="currency"
+          onChange={ this.handleChange }
+          value={ currency }
+        >
+          <option value="" disabled hidden>Moeda</option>
+          {
+            Object.keys(getCurrency)
+              .filter((key) => key !== 'USDT')
+              .map((coin) => (
+                <option
+                  value={ coin }
+                  key={ coin }
+                  data-testid={ coin }
+                >
+                  {coin}
+                </option>))
+          }
+        </select>
+      </label>
     );
   }
 
@@ -108,13 +119,9 @@ class Wallet extends React.Component {
         onChange={ this.handleChange }
         value={ method }
       >
-        {/* <option
-          value=""
-          disabled
-          hidden
-        >
+        <option value="" disabled hidden>
           Selecione o Método de Pagamento
-        </option> */}
+        </option>
         {
           paymentMethods.map((paymentMethod) => (
             <option key={ paymentMethod } value={ paymentMethod }>
@@ -167,7 +174,7 @@ class Wallet extends React.Component {
 
     return (
       <header className="wallet-header">
-        <h1>Trybe</h1>
+        <h1>TrybeWallet</h1>
         <div className="email-currency-component">
           <h3 data-testid="email-field">{ `Email: ${getEmail}` }</h3>
           <div className="currency-component">

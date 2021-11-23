@@ -40,3 +40,7 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.moeda {
+display: none;
+}
