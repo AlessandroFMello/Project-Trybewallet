@@ -48,10 +48,10 @@ class Table extends Component {
               <td>{tag}</td>
               <td>{method}</td>
               <td>{value}</td>
-              <td>{currency}</td>
-              <td>{exchangeRates[currency].ask}</td>
-              <td>{(exchangeRates[currency].ask * value).toFixed(2)}</td>
-              <td>{exchangeRates[currency].name}</td>
+              <td>{exchangeRates[currency].name.split('/Real Brasileiro').join('')}</td>
+              <td>{Math.round((exchangeRates[currency].ask) * 100) / 100}</td>
+              <td>{Math.round((exchangeRates[currency].ask * value) * 100) / 100}</td>
+              <td>Real</td>
               <td>
                 <button type="button">Editar</button>
                 <button type="button">Excluir</button>
@@ -73,9 +73,10 @@ class Table extends Component {
   }
 
   render() {
+    const { expenses } = this.props;
     return (
       <div className="expenses-div">
-        { this.renderTable() }
+        { expenses.length > 0 ? this.renderTable() : null }
       </div>
     );
   }
