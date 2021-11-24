@@ -69,6 +69,7 @@ class Form extends Component {
         placeholder="Valor"
         onChange={ this.handleChange }
         value={ value }
+        required
       />
     );
   }
@@ -87,6 +88,7 @@ class Form extends Component {
           name="currency"
           onChange={ this.handleChange }
           value={ currency }
+          required
         >
           <option value="" disabled hidden>Moeda</option>
           {
@@ -115,6 +117,7 @@ class Form extends Component {
         name="method"
         onChange={ this.handleChange }
         value={ method }
+        required
       >
         <option value="" disabled hidden>
           Selecione o Método de Pagamento
@@ -138,7 +141,11 @@ class Form extends Component {
         name="tag"
         onChange={ this.handleChange }
         value={ tag }
+        required
       >
+        <option value="" disabled hidden>
+          Selecione a Tag
+        </option>
         {
           categories.map((category) => (
             <option key={ category } value={ category }>
@@ -159,6 +166,7 @@ class Form extends Component {
         placeholder="Descrição"
         onChange={ this.handleChange }
         value={ description }
+        required
       />
     );
   }

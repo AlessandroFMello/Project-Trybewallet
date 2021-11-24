@@ -14,7 +14,7 @@ class Login extends React.Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
-    this.activateSUbmitButton = this.activateSUbmitButton.bind(this);
+    this.activateSubmitButton = this.activateSubmitButton.bind(this);
     this.checkEmail = this.checkEmail.bind(this);
     this.checkPassword = this.checkPassword.bind(this);
     this.checkIfAllFulfilled = this.checkIfAllFulfilled.bind(this);
@@ -27,7 +27,7 @@ class Login extends React.Component {
 
     this.setState({
       [name]: value,
-    }, this.activateSUbmitButton); // Cuidar assincronicidade
+    }, this.activateSubmitButton); // Cuidar assincronicidade
   }
 
   onSubmitClick(event) {
@@ -37,7 +37,7 @@ class Login extends React.Component {
     history.push('/carteira');
   }
 
-  activateSUbmitButton() {
+  activateSubmitButton() {
     // Verificar senha
     // Verificar email
     // Verificar se está tudo preenchido
