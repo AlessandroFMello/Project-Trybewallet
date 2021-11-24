@@ -44,3 +44,18 @@ body {
 .moeda {
   display: none;
 }
+
+#expense-form {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.expenses-div {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}

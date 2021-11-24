@@ -52,9 +52,9 @@ class Form extends Component {
     });
     this.setState({
       value: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
+      currency: '',
+      method: '',
+      tag: '',
       description: '',
     });
   }
