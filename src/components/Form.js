@@ -165,7 +165,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form id="expense-form" onSubmit={ this.handleSubmit }>
+      <form id="expense-form" className="expense-form" onSubmit={ this.handleSubmit }>
         { this.formValue() }
         { this.formCurrency() }
         { this.formMethod() }
