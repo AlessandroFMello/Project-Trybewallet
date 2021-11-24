@@ -84,6 +84,7 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: PropTypes.shape({
+    length: PropTypes.number,
     map: PropTypes.func,
   }).isRequired,
 };
